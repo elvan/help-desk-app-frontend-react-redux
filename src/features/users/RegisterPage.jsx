@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaUserPlus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { registerUser } from './userActions';
+import { resetUserState } from './userSlice';
 
 export const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -16,13 +17,11 @@ export const RegisterPage = () => {
   const { name, email, password, confirmPassword } = formData;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { user, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.userState
   );
-
-  const error = false;
-  const pending = false;
 
   const onChange = (event) => {
     setFormData((prevState) => ({
@@ -48,6 +47,18 @@ export const RegisterPage = () => {
     dispatch(registerUser(userData));
   };
 
+  useEffect(() => {
+    if (user || isSuccess) {
+      navigate('/');
+    }
+
+    if (isError) {
+      toast.error(message);
+    }
+
+    dispatch(resetUserState());
+  }, [user, isSuccess, isError, toast]);
+
   return (
     <div className='row'>
       <div className='col-md-6 mx-auto'>
@@ -67,10 +78,6 @@ export const RegisterPage = () => {
             <hr />
 
             <form onSubmit={onSubmit}>
-              {error ? (
-                <div className='alert alert-warning'>Error message</div>
-              ) : null}
-
               <div className='mb-3'>
                 <label htmlFor='name' className='form-label'>
                   Name
@@ -85,6 +92,7 @@ export const RegisterPage = () => {
                   required
                   minLength={2}
                   maxLength={50}
+                  disabled={isLoading}
                 />
               </div>
 
@@ -102,6 +110,7 @@ export const RegisterPage = () => {
                   required
                   minLength={5}
                   maxLength={50}
+                  disabled={isLoading}
                 />
               </div>
 
@@ -119,6 +128,7 @@ export const RegisterPage = () => {
                   required
                   minLength={8}
                   maxLength={64}
+                  disabled={isLoading}
                 />
               </div>
 
@@ -136,16 +146,23 @@ export const RegisterPage = () => {
                   required
                   minLength={8}
                   maxLength={64}
+                  disabled={isLoading}
                 />
               </div>
 
               <div className='d-grid d-block gap-2'>
-                <button type='submit' className='btn btn-success btn-block'>
-                  {pending ? (
-                    <span className='spinner-border spinner-border-sm mr-2'></span>
-                  ) : null}
-                  <FaUserPlus className='me-2 pb-1' size={18} />
-                  {pending ? 'Registering...' : 'Register'}
+                <button
+                  type='submit'
+                  className='btn btn-success btn-block'
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <span className='spinner-border spinner-border-sm me-2'></span>
+                  ) : (
+                    <FaUserPlus className='me-2 pb-1' size={18} />
+                  )}
+
+                  {isLoading ? 'Registering...' : 'Register'}
                 </button>
               </div>
 
