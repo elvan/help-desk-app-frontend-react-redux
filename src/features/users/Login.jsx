@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { loginUser } from './userActions';
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +15,12 @@ export const Login = () => {
   const error = false;
   const pending = false;
 
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isSuccess, isError, message } = useSelector(
+    (state) => state.userState
+  );
+
   const onChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -20,10 +28,12 @@ export const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setFormData({
-      email: '',
-      password: '',
-    });
+    const userData = {
+      email,
+      password,
+    };
+
+    dispatch(loginUser(userData));
   };
 
   return (

@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { FaUserPlus } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { registerUser } from './userActions';
 
-export const Register = () => {
+export const RegisterPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,14 +15,23 @@ export const Register = () => {
 
   const { name, email, password, confirmPassword } = formData;
 
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isSuccess, isError, message } = useSelector(
+    (state) => state.userState
+  );
+
   const error = false;
   const pending = false;
 
   const onChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setFormData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
   };
 
-  const handleSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
@@ -28,12 +39,13 @@ export const Register = () => {
       return;
     }
 
-    setFormData({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    });
+    const userData = {
+      name,
+      email,
+      password,
+    };
+
+    dispatch(registerUser(userData));
   };
 
   return (
@@ -54,7 +66,7 @@ export const Register = () => {
 
             <hr />
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={onSubmit}>
               {error ? (
                 <div className='alert alert-warning'>Error message</div>
               ) : null}

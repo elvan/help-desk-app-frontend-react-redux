@@ -4,7 +4,7 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Home } from './features/home/Home';
 import { Login } from './features/users/Login';
-import { Register } from './features/users/Register';
+import { RegisterPage } from './features/users/RegisterPage';
 
 export const App = () => {
   return (
@@ -16,7 +16,7 @@ export const App = () => {
           <main className='container-lg'>
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/register' element={<Register />} />
+              <Route path='/register' element={<RegisterPage />} />
               <Route path='/login' element={<Login />} />
             </Routes>
           </main>
