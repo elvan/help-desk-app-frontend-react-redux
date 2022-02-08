@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { loginUser } from './userActions';
 
 export const LoginPage = () => {
@@ -36,14 +35,10 @@ export const LoginPage = () => {
   };
 
   useEffect(() => {
-    if (user || isSuccess) {
+    if (user) {
       navigate('/');
     }
-
-    if (isError) {
-      toast.error(message);
-    }
-  }, [isSuccess, isError, message, user, navigate]);
+  }, [user, navigate]);
 
   return (
     <div className='row'>
@@ -74,10 +69,6 @@ export const LoginPage = () => {
             <hr />
 
             <form onSubmit={onSubmit}>
-              {isError ? (
-                <div className='alert alert-warning'>Error message</div>
-              ) : null}
-
               <div className='mb-3'>
                 <label htmlFor='email' className='form-label'>
                   Email

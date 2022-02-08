@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Footer } from './components/Footer';
@@ -5,8 +7,15 @@ import { Header } from './components/Header';
 import { HomePage } from './features/home/HomePage';
 import { LoginPage } from './features/users/LoginPage';
 import { RegisterPage } from './features/users/RegisterPage';
+import { checkAuthentication } from './features/users/userSlice';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuthentication());
+  }, [dispatch]);
+
   return (
     <>
       <BrowserRouter>
@@ -25,9 +34,9 @@ export const App = () => {
         </div>
       </BrowserRouter>
       <ToastContainer
-        position='top-right'
+        position='bottom-right'
         theme='colored'
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={true}
         newestOnTop={true}
         rtl={false}

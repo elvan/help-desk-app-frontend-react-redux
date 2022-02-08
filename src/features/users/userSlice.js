@@ -1,14 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { loginUser, logoutUser, registerUser } from './userActions';
 
-const user = JSON.parse(localStorage.getItem('help-desk-app-user'));
-
 const initialUser = {
+  user: null,
+  message: '',
   isLoading: false,
   isSuccess: false,
   isError: false,
-  message: '',
-  user: user ?? null,
 };
 
 export const userSlice = createSlice({
@@ -17,7 +15,16 @@ export const userSlice = createSlice({
   initialState: initialUser,
 
   reducers: {
-    resetUserState: (state) => initialUser,
+    resetUserState: (state) => {
+      state = initialUser;
+    },
+
+    checkAuthentication: (state) => {
+      const user = JSON.parse(localStorage.getItem('help-desk-app-user'));
+      if (user) {
+        state.user = user;
+      }
+    },
   },
 
   extraReducers: (builder) => {
@@ -26,17 +33,17 @@ export const userSlice = createSlice({
     });
 
     builder.addCase(registerUser.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.message = action.payload.message;
       state.isLoading = false;
       state.isSuccess = true;
-      state.message = action.payload.message;
-      state.user = action.payload.user;
     });
 
     builder.addCase(registerUser.rejected, (state, action) => {
+      state.user = null;
+      state.message = action.payload.message;
       state.isLoading = false;
       state.isError = true;
-      state.message = action.payload.message;
-      state.user = null;
     });
 
     builder.addCase(loginUser.pending, (state, action) => {
@@ -44,25 +51,31 @@ export const userSlice = createSlice({
     });
 
     builder.addCase(loginUser.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.message = action.payload.message;
       state.isLoading = false;
       state.isSuccess = true;
-      state.message = action.payload.message;
-      state.user = action.payload.user;
     });
 
     builder.addCase(loginUser.rejected, (state, action) => {
-      state.isLoading = false;
-      state.isError = true;
-      state.message = action.payload.message;
       state.user = null;
+      state.message = action.payload.message;
+      state.isLoading = false;
+      state.isSuccess = false;
+      state.isError = true;
     });
 
     builder.addCase(logoutUser.fulfilled, (state, action) => {
       state.user = null;
+      state.message = 'Logout successful';
+      state.isLoading = false;
+      state.isSuccess = true;
+      state.isError = false;
     });
   },
 });
 
 export const resetUserState = userSlice.actions.resetUserState;
+export const checkAuthentication = userSlice.actions.checkAuthentication;
 
 export const userReducer = userSlice.reducer;

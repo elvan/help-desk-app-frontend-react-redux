@@ -47,14 +47,10 @@ export const RegisterPage = () => {
   };
 
   useEffect(() => {
-    if (user || isSuccess) {
+    if (user) {
       navigate('/');
     }
-
-    if (isError) {
-      toast.error(message);
-    }
-  }, [isSuccess, isError, message, user, navigate]);
+  }, [user, navigate]);
 
   return (
     <div className='row'>
@@ -68,7 +64,7 @@ export const RegisterPage = () => {
 
             <p className='lead text-center'>
               <strong>
-                Create an account today, it's free and it only takes a minute
+                Create an account today. It's free and it only takes a minute
               </strong>
             </p>
 

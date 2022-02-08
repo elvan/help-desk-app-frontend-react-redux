@@ -6,7 +6,7 @@ const API_URL =
 const register = async (userData) => {
   const { data } = await axios.post(API_URL + '/users/register', userData);
 
-  if (data) {
+  if (data && data.user) {
     localStorage.setItem('help-desk-app-user', JSON.stringify(data.user));
   }
 
@@ -16,7 +16,7 @@ const register = async (userData) => {
 const login = async (userData) => {
   const { data } = await axios.post(API_URL + '/users/login', userData);
 
-  if (data) {
+  if (data && data.user) {
     localStorage.setItem('help-desk-app-user', JSON.stringify(data.user));
   }
 
