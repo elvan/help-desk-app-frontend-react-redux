@@ -1,6 +1,6 @@
 {
   "name": "help-desk-app",
-  "version": "0.1.0",
+  "version": "0.18.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
