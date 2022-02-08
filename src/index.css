@@ -13,3 +13,4 @@ code {
 }
 
 @import 'bootswatch/dist/zephyr/bootstrap.min.css';
+@import 'react-toastify/dist/ReactToastify.css';

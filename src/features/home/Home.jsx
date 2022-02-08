@@ -1,3 +1,4 @@
+import { FaSignInAlt, FaUserPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 export const Home = () => {
@@ -13,11 +14,14 @@ export const Home = () => {
 
       <div className='mb-5'>
         <Link
-          to='/register'
-          type='button'
-          className='btn btn-primary btn-lg px-4'
+          to='/login'
+          className='btn btn-outline-secondary btn-lg px-4 me-2'
         >
-          Register Today
+          <FaSignInAlt size={24} className='pb-1' /> Login
+        </Link>
+
+        <Link to='/register' className='btn btn-success btn-lg px-4'>
+          <FaUserPlus size={24} className='pb-1' /> Register
         </Link>
       </div>
     </div>

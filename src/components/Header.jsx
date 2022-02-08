@@ -21,10 +21,10 @@ export const Header = () => {
               <FaHome /> Home
             </Nav.Link>
             <Nav.Link as={NavLink} to='/login'>
-              <FaSignInAlt /> Login
+              <FaSignInAlt className='pb-1' /> Login
             </Nav.Link>
             <Nav.Link as={NavLink} to='/register'>
-              <FaUserPlus /> Register
+              <FaUserPlus className='pb-1' /> Register
             </Nav.Link>
             <NavDropdown align='end' title='Dropdown' id='basic-nav-dropdown'>
               <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
