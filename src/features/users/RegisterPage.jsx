@@ -54,7 +54,7 @@ export const RegisterPage = () => {
     if (isError) {
       toast.error(message);
     }
-  }, [user, isSuccess, isError, toast]);
+  }, [isSuccess, isError, message, user, navigate]);
 
   return (
     <div className='row'>
