@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser } from './userActions';
+import { logoutUser, registerUser } from './userActions';
 
 const user = JSON.parse(localStorage.getItem('help-desk-app-user'));
 
@@ -36,6 +36,10 @@ export const userSlice = createSlice({
       state.isError = true;
       state.user = null;
       state.message = action.payload;
+    });
+
+    builder.addCase(logoutUser.fulfilled, (state, action) => {
+      state.user = null;
     });
   },
 });

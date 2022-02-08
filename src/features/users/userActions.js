@@ -20,3 +20,10 @@ export const loginUser = createAsyncThunk(
     console.log(user);
   }
 );
+
+export const logoutUser = createAsyncThunk(
+  'user/logoutUser',
+  async (user, { rejectWithValue }) => {
+    await userService.logout();
+  }
+);
