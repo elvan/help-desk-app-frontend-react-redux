@@ -7,8 +7,8 @@ import { loginUser } from './userActions';
 
 export const LoginPage = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: 'demo@example.com',
+    password: 'pswd1234',
   });
 
   const { email, password } = formData;
@@ -57,6 +57,18 @@ export const LoginPage = () => {
 
             <p className='lead text-center'>
               <strong>Login to access the full features of HelpDesk</strong>
+            </p>
+
+            <p className='alert alert-info'>
+              Use this demo account to test the application:
+              <br />
+              <strong>
+                Email: <span className='text-primary'>demo@example.com</span>
+              </strong>
+              <br />
+              <strong>
+                Password: <span className='text-primary'>pswd1234</span>
+              </strong>
             </p>
 
             <hr />

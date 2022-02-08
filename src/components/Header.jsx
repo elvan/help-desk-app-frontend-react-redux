@@ -48,7 +48,7 @@ export const Header = () => {
               <NavDropdown
                 id='basic-nav-dropdown'
                 align='end'
-                title={user.name}
+                title={user.email}
               >
                 <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
                 <NavDropdown.Item href='#action/3.2'>
