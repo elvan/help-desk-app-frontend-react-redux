@@ -13,11 +13,22 @@ const register = async (userData) => {
   return data;
 };
 
+const login = async (userData) => {
+  const { data } = await axios.post(API_URL + '/users/login', userData);
+
+  if (data) {
+    localStorage.setItem('help-desk-app-user', JSON.stringify(data.user));
+  }
+
+  return data;
+};
+
 const logout = async () => {
   localStorage.removeItem('help-desk-app-user');
 };
 
 export const userService = {
   register,
+  login,
   logout,
 };

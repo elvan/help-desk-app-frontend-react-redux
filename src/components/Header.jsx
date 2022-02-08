@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import {
   FaHireAHelper,
@@ -9,6 +10,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../features/users/userActions';
+import { resetUserState } from '../features/users/userSlice';
 
 export const Header = () => {
   const { user } = useSelector((state) => state.userState);
@@ -18,8 +20,11 @@ export const Header = () => {
 
   const onLogout = () => {
     dispatch(logoutUser());
+    dispatch(resetUserState());
     navigate('/');
   };
+
+  useEffect(() => {}, [user]);
 
   return (
     <Navbar bg='light' expand='md' className='mb-3'>

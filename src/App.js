@@ -2,8 +2,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import { Home } from './features/home/Home';
-import { Login } from './features/users/Login';
+import { HomePage } from './features/home/HomePage';
+import { LoginPage } from './features/users/LoginPage';
 import { RegisterPage } from './features/users/RegisterPage';
 
 export const App = () => {
@@ -15,9 +15,9 @@ export const App = () => {
 
           <main className='container-lg'>
             <Routes>
-              <Route path='/' element={<Home />} />
+              <Route path='/' element={<HomePage />} />
               <Route path='/register' element={<RegisterPage />} />
-              <Route path='/login' element={<Login />} />
+              <Route path='/login' element={<LoginPage />} />
             </Routes>
           </main>
 

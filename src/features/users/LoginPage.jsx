@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { loginUser } from './userActions';
 
-export const Login = () => {
+export const LoginPage = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -12,10 +13,8 @@ export const Login = () => {
 
   const { email, password } = formData;
 
-  const error = false;
-  const pending = false;
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { user, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.userState
@@ -25,7 +24,7 @@ export const Login = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
 
     const userData = {
@@ -35,6 +34,16 @@ export const Login = () => {
 
     dispatch(loginUser(userData));
   };
+
+  useEffect(() => {
+    if (user || isSuccess) {
+      navigate('/');
+    }
+
+    if (isError) {
+      toast.error(message);
+    }
+  }, [user, isSuccess, isError, toast]);
 
   return (
     <div className='row'>
@@ -52,8 +61,8 @@ export const Login = () => {
 
             <hr />
 
-            <form onSubmit={handleSubmit}>
-              {error ? (
+            <form onSubmit={onSubmit}>
+              {isError ? (
                 <div className='alert alert-warning'>Error message</div>
               ) : null}
 
@@ -71,6 +80,7 @@ export const Login = () => {
                   required
                   minLength={5}
                   maxLength={50}
+                  disabled={isLoading}
                 />
               </div>
 
@@ -88,16 +98,21 @@ export const Login = () => {
                   required
                   minLength={8}
                   maxLength={64}
+                  disabled={isLoading}
                 />
               </div>
 
               <div className='d-grid d-block gap-2'>
-                <button type='submit' className='btn btn-success btn-block'>
-                  {pending ? (
+                <button
+                  type='submit'
+                  className='btn btn-success btn-block'
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
                     <span className='spinner-border spinner-border-sm mr-2'></span>
                   ) : null}
                   <FaSignInAlt className='me-2 pb-1' size={18} />
-                  {pending ? 'Logging in...' : 'Login'}
+                  {isLoading ? 'Logging in...' : 'Login'}
                 </button>
               </div>
 

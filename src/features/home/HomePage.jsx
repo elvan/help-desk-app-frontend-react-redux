@@ -1,7 +1,7 @@
 import { FaSignInAlt, FaUserPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-export const Home = () => {
+export const HomePage = () => {
   return (
     <div>
       <h1>Get started with HelpDesk</h1>

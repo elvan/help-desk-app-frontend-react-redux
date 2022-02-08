@@ -17,7 +17,13 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (user, { rejectWithValue }) => {
-    console.log(user);
+    try {
+      return await userService.login(user);
+    } catch (error) {
+      const message =
+        error.response?.data?.message || error?.message || error.toString();
+      return rejectWithValue(message);
+    }
   }
 );
 
