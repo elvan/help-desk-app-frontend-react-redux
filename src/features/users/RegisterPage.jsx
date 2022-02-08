@@ -18,9 +18,7 @@ export const RegisterPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { user, isLoading, isSuccess, isError, message } = useSelector(
-    (state) => state.userState
-  );
+  const { user, isLoading } = useSelector((state) => state.userState);
 
   const onChange = (event) => {
     setFormData((prevState) => ({

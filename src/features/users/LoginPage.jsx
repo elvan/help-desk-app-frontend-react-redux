@@ -15,9 +15,7 @@ export const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { user, isLoading, isSuccess, isError, message } = useSelector(
-    (state) => state.userState
-  );
+  const { user, isLoading } = useSelector((state) => state.userState);
 
   const onChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });

@@ -11,7 +11,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../features/users/userActions';
 
 export const Header = () => {
-  const { isSuccess, message, user } = useSelector((state) => state.userState);
+  const { user } = useSelector((state) => state.userState);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
