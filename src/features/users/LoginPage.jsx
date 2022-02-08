@@ -110,9 +110,11 @@ export const LoginPage = () => {
                   disabled={isLoading}
                 >
                   {isLoading ? (
-                    <span className='spinner-border spinner-border-sm mr-2'></span>
-                  ) : null}
-                  <FaSignInAlt className='me-2 pb-1' size={18} />
+                    <span className='spinner-border spinner-border-sm me-2'></span>
+                  ) : (
+                    <FaSignInAlt className='pb-1 me-2' size={18} />
+                  )}
+
                   {isLoading ? 'Logging in...' : 'Login'}
                 </button>
               </div>

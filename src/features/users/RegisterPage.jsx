@@ -150,7 +150,7 @@ export const RegisterPage = () => {
                   {isLoading ? (
                     <span className='spinner-border spinner-border-sm me-2'></span>
                   ) : (
-                    <FaUserPlus className='me-2 pb-1' size={18} />
+                    <FaUserPlus className='pb-1 me-2' size={18} />
                   )}
 
                   {isLoading ? 'Registering...' : 'Register'}
