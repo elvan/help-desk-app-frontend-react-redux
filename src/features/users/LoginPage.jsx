@@ -44,7 +44,7 @@ export const LoginPage = () => {
         <div className='card'>
           <div className='card-body'>
             <h3 className='text-center pb-3 pt-3'>
-              <FaSignInAlt className='me-2 pb-1' size={32} />
+              <FaSignInAlt size={36} className='me-2' />
               Login
             </h3>
 
@@ -112,7 +112,7 @@ export const LoginPage = () => {
                   {isLoading ? (
                     <span className='spinner-border spinner-border-sm me-2'></span>
                   ) : (
-                    <FaSignInAlt className='pb-1 me-2' size={18} />
+                    <FaSignInAlt className='me-1' size={19} />
                   )}
 
                   {isLoading ? 'Logging in...' : 'Login'}

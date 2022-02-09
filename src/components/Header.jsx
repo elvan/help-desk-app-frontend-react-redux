@@ -29,7 +29,7 @@ export const Header = () => {
           to='/'
           className='d-flex align-items-center text-dark text-decoration-none'
         >
-          <FaHireAHelper size={30} className='me-2' />
+          <FaHireAHelper size={34} className='me-2' />
           <span className='fs-4'>HelpDesk</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -54,17 +54,19 @@ export const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={onLogout}>
-                  <FaSignOutAlt className='me-1' />
+                  <FaSignOutAlt size={18} className='me-1' />
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
               <>
                 <Nav.Link as={NavLink} to='/login'>
-                  <FaSignInAlt className='pb-1' /> Login
+                  <FaSignInAlt size={18} className='me-1' />
+                  Login
                 </Nav.Link>
                 <Nav.Link as={NavLink} to='/register'>
-                  <FaUserPlus className='pb-1' /> Register
+                  <FaUserPlus size={18} className='me-1' />
+                  Register
                 </Nav.Link>
               </>
             )}

@@ -17,11 +17,13 @@ export const HomePage = () => {
           to='/login'
           className='btn btn-outline-secondary btn-lg px-4 me-2'
         >
-          <FaSignInAlt size={24} className='pb-1' /> Login
+          <FaSignInAlt size={27} className='me-2' />
+          Login
         </Link>
 
         <Link to='/register' className='btn btn-success btn-lg px-4'>
-          <FaUserPlus size={24} className='pb-1' /> Register
+          <FaUserPlus size={27} className='me-2' />
+          Register
         </Link>
       </div>
     </div>
