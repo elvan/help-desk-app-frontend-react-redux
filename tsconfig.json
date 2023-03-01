@@ -26,7 +26,6 @@
     }
   },
   "include": [
-    "next-env.d.ts",
     "**/*.js",
     "**/*.jsx",
     "**/*.ts",
