@@ -1,7 +1,7 @@
 import { FaQuestionCircle, FaTicketAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-export default function Home() {
+function Home() {
   return (
     <>
       <section className='heading'>
@@ -19,3 +19,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;

@@ -87,5 +87,4 @@ export const ticketSlice = createSlice({
 });
 
 export const { reset } = ticketSlice.actions;
-
 export default ticketSlice.reducer;
