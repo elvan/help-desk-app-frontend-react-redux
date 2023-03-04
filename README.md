@@ -5,23 +5,37 @@
 ![Homepage](https://raw.githubusercontent.com/elvan/help-desk-app-frontend-react-redux/main/screenshots/Screenshot%202023-03-02%20193632.png)
 *Homepage*
 
+---
+
 ![Create New Ticket](https://raw.githubusercontent.com/elvan/help-desk-app-frontend-react-redux/main/screenshots/Screenshot%202023-03-02%20193651.png)
 *Create New Ticket*
+
+---
 
 ![Tickets Listing](https://raw.githubusercontent.com/elvan/help-desk-app-frontend-react-redux/main/screenshots/Screenshot%202023-03-02%20193709.png)
 *Tickets Listing*
 
+---
+
 ![Ticket Detail Page](https://raw.githubusercontent.com/elvan/help-desk-app-frontend-react-redux/main/screenshots/Screenshot%202023-03-02%20193730.png)
 *Ticket Detail Page*
+
+---
 
 ![Add Note Modal](https://raw.githubusercontent.com/elvan/help-desk-app-frontend-react-redux/main/screenshots/Screenshot%202023-03-02%20193752.png)
 *Add Note Modal*
 
+---
+
 ![Register Page](https://raw.githubusercontent.com/elvan/help-desk-app-frontend-react-redux/main/screenshots/Screenshot%202023-03-02%20193820.png)
 *Register Page*
 
+---
+
 ![Login Page](https://raw.githubusercontent.com/elvan/help-desk-app-frontend-react-redux/main/screenshots/Screenshot%202023-03-02%20193837.png)
 *Login Page*
+
+---
 
 # Getting Started with Create React App and Redux
 
